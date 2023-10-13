@@ -28,18 +28,18 @@ with col2:
 with col3:
     b2 = st.number_input('B2:', min_value=0, max_value=255, value=0)
 
-# 3Dプロットの作成
-fig = go.Figure()
-
 # 頂点のインデックスを定義（立方体を構成する各三角形の3つの頂点）
 faces_idx = [
-    [0, 1, 5, 4],  # front
-    [1, 2, 6, 5],  # right
-    [2, 3, 7, 6],  # back
-    [3, 0, 4, 7],  # left
-    [4, 5, 6, 7],  # top
-    [0, 1, 2, 3],  # bottom
+    [0, 1, 5], [5, 4, 0],  # front
+    [1, 2, 6], [6, 5, 1],  # right
+    [2, 3, 7], [7, 6, 2],  # back
+    [3, 0, 4], [4, 7, 3],  # left
+    [4, 5, 6], [6, 7, 4],  # top
+    [0, 1, 2], [2, 3, 0],  # bottom
 ]
+
+# 3Dプロットの作成
+fig = go.Figure()
 
 # 立方体1
 fig.add_trace(go.Mesh3d(
