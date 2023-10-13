@@ -22,11 +22,11 @@ with col3:
 st.write("2つ目の立方体")
 col1, col2, col3 = st.columns(3)
 with col1:
-    r2 = st.number_input('R2:', min_value=0, max_value=255, value=r1 + 10)
+    r2 = st.number_input('R2:', min_value=0, max_value=255, value=0)
 with col2:
-    g2 = st.number_input('G2:', min_value=0, max_value=255, value=g1 + 10)
+    g2 = st.number_input('G2:', min_value=0, max_value=255, value=0)
 with col3:
-    b2 = st.number_input('B2:', min_value=0, max_value=255, value=b1 + 10)
+    b2 = st.number_input('B2:', min_value=0, max_value=255, value=0)
 
 # 立方体のサイズ
 cube_size = st.slider("Cube Size:", min_value=1, max_value=100, value=10)
