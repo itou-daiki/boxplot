@@ -28,9 +28,6 @@ with col2:
 with col3:
     b2 = st.number_input('B2:', min_value=0, max_value=255, value=0)
 
-# 立方体のサイズ
-cube_size = st.slider("Cube Size:", min_value=1, max_value=100, value=10)
-
 # 3Dプロットの作成
 fig = go.Figure()
 
