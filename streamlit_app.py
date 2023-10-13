@@ -9,7 +9,6 @@ st.title("3D RGB Cube Visualizer")
 st.caption("Created by Daiki Ito")
 st.subheader("RGB値から半透明の立方体を描画します")
 
-
 # RGB値をユーザーから取得
 st.write("1つ目の立方体")
 col1, col2, col3 = st.columns(3)
@@ -23,17 +22,14 @@ with col3:
 st.write("2つ目の立方体")
 col1, col2, col3 = st.columns(3)
 with col1:
-    r2 = st.number_input('R2:', min_value=0, max_value=255, value=0)
+    r2 = st.number_input('R2:', min_value=0, max_value=255, value=r1 + 10)
 with col2:
-    g2 = st.number_input('G2:', min_value=0, max_value=255, value=0)
+    g2 = st.number_input('G2:', min_value=0, max_value=255, value=g1 + 10)
 with col3:
-    b2 = st.number_input('B2:', min_value=0, max_value=255, value=0)
+    b2 = st.number_input('B2:', min_value=0, max_value=255, value=b1 + 10)
 
 # 立方体のサイズ
 cube_size = st.slider("Cube Size:", min_value=1, max_value=100, value=10)
-
-# 3Dプロットの作成
-fig = go.Figure()
 
 # 頂点のインデックスを定義（立方体を構成する各三角形の3つの頂点）
 faces_idx = [
@@ -44,6 +40,9 @@ faces_idx = [
     [0, 3, 7], [0, 7, 4],  # left
     [1, 2, 6], [1, 6, 5],  # right
 ]
+
+# 3Dプロットの作成
+fig = go.Figure()
 
 # 立方体1
 fig.add_trace(go.Mesh3d(
