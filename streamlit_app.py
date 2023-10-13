@@ -49,7 +49,7 @@ fig.add_trace(go.Mesh3d(
     i=[idx[0] for idx in faces_idx],
     j=[idx[1] for idx in faces_idx],
     k=[idx[2] for idx in faces_idx],
-    opacity=0.5,
+    opacity=0.2,  # 透明度を0.2に設定
     color='red',
     showscale=False
 ))
@@ -62,8 +62,8 @@ fig.add_trace(go.Mesh3d(
     i=[idx[0] for idx in faces_idx],
     j=[idx[1] for idx in faces_idx],
     k=[idx[2] for idx in faces_idx],
-    opacity=0.5,
-    color='green',
+    opacity=0.2,  # 透明度を0.2に設定
+    color='blue',  # 色を青に変更
     showscale=False
 ))
 
