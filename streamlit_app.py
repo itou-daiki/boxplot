@@ -1,31 +1,34 @@
-# Streamlitライブラリをインポート
 import streamlit as st
+import plotly.express as px
+import pandas as pd
 
-# ページ設定（タブに表示されるタイトル、表示幅）
-st.set_page_config(page_title="タイトル", layout="wide")
+# Streamlitのページ設定
+st.set_page_config(page_title="3D RGB Visualizer", layout="wide")
 
-# タイトルを設定
-st.title('Streamlitのサンプルアプリ')
+# ヘッダー
+st.title("3D RGB Visualizer")
+st.caption("Created by Daiki Ito")
+st.subheader("３次元グラフを描画することができます")
 
-# テキスト入力ボックスを作成し、ユーザーからの入力を受け取る
-user_input = st.text_input('あなたの名前を入力してください')
+# RGB値をユーザーから取得
+r1 = st.number_input('R1:', min_value=0, max_value=255, value=200)
+g1 = st.number_input('G1:', min_value=0, max_value=255, value=100)
+b1 = st.number_input('B1:', min_value=0, max_value=255, value=50)
 
-# ボタンを作成し、クリックされたらメッセージを表示
-if st.button('挨拶する'):
-    if user_input:  # 名前が入力されているかチェック
-        st.success(f'🌟 こんにちは、{user_input}さん! 🌟')  # メッセージをハイライト
-    else:
-        st.error('名前を入力してください。')  # エラーメッセージを表示
+r2 = st.number_input('R2:', min_value=0, max_value=255, value=250)
+g2 = st.number_input('G2:', min_value=0, max_value=255, value=200)
+b2 = st.number_input('B2:', min_value=0, max_value=255, value=100)
 
-# スライダーを作成し、値を選択
-number = st.slider('好きな数字（10進数）を選んでください', 0, 100)
+# DataFrameの作成
+df = pd.DataFrame({
+    'x': [r1, r2],
+    'y': [g1, g2],
+    'z': [b1, b2],
+    'color': ['Point 1', 'Point 2']
+})
 
-# 補足メッセージ
-st.caption("十字キー（左右）でも調整できます。")
+# 3Dプロットの作成
+fig = px.scatter_3d(df, x='x', y='y', z='z', color='color', color_discrete_map={'Point 1':'rgb(255,0,0)', 'Point 2':'rgb(0,255,0)'})
 
-# 選択した数字を表示
-st.write(f'あなたが選んだ数字は「{number}」です。')
-
-# 選択した数値を2進数に変換
-binary_representation = bin(number)[2:]  # 'bin'関数で2進数に変換し、先頭の'0b'を取り除く
-st.info(f'🔢 10進数の「{number}」を2進数で表現すると「{binary_representation}」になります。 🔢')  # 2進数の表示をハイライト
+# プロットの表示
+st.plotly_chart(fig)
