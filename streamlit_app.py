@@ -10,7 +10,7 @@ st.caption("Created by Daiki Ito")
 st.subheader("RGB値から半透明の立方体を描画します")
 
 # RGB値をユーザーから取得
-st.write("1つ目の立方体")
+st.write("立方体１")
 col1, col2, col3 = st.columns(3)
 with col1:
     r1 = st.number_input('R1:', min_value=0, max_value=255, value=0)
@@ -19,7 +19,7 @@ with col2:
 with col3:
     b1 = st.number_input('B1:', min_value=0, max_value=255, value=0)
 
-st.write("2つ目の立方体")
+st.write("立方体２")
 col1, col2, col3 = st.columns(3)
 with col1:
     r2 = st.number_input('R2:', min_value=0, max_value=255, value=0)
@@ -31,14 +31,14 @@ with col3:
 # 3Dプロットの作成
 fig = go.Figure()
 
-# 頂点のインデックスを定義（立方体を構成する各面の4つの頂点）
+# 頂点のインデックスを定義（立方体を構成する各三角形の3つの頂点）
 faces_idx = [
-    [0, 1, 5, 4],  # front
-    [1, 2, 6, 5],  # right
-    [2, 3, 7, 6],  # back
-    [3, 0, 4, 7],  # left
-    [0, 1, 2, 3],  # bottom
-    [4, 5, 6, 7],  # top
+    [0, 1, 2], [0, 2, 3],  # bottom
+    [4, 5, 6], [4, 6, 7],  # top
+    [0, 1, 5], [0, 5, 4],  # front
+    [2, 3, 7], [2, 7, 6],  # back
+    [0, 3, 7], [0, 7, 4],  # left
+    [1, 2, 6], [1, 6, 5],  # right
 ]
 
 # 立方体1
