@@ -11,13 +11,13 @@ st.caption("Created by Daiki Ito")
 st.subheader("RGB値から半透明の立方体を描画します")
 
 # RGB値をユーザーから取得
-r1 = st.number_input('R1:', min_value=0, max_value=255, value=200)
-g1 = st.number_input('G1:', min_value=0, max_value=255, value=100)
-b1 = st.number_input('B1:', min_value=0, max_value=255, value=50)
+r1 = st.number_input('R1:', min_value=0, max_value=255, value=0)
+g1 = st.number_input('G1:', min_value=0, max_value=255, value=0)
+b1 = st.number_input('B1:', min_value=0, max_value=255, value=0)
 
-r2 = st.number_input('R2:', min_value=0, max_value=255, value=250)
-g2 = st.number_input('G2:', min_value=0, max_value=255, value=200)
-b2 = st.number_input('B2:', min_value=0, max_value=255, value=100)
+r2 = st.number_input('R2:', min_value=0, max_value=255, value=0)
+g2 = st.number_input('G2:', min_value=0, max_value=255, value=0)
+b2 = st.number_input('B2:', min_value=0, max_value=255, value=0)
 
 # 立方体のサイズ
 cube_size = 10
