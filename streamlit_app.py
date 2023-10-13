@@ -9,11 +9,9 @@ st.title("3D RGB Cube Visualizer")
 st.caption("Created by Daiki Ito")
 st.subheader("RGB値から半透明の立方体を描画します")
 
-# 立方体のサイズ
-cube_size = st.slider("Cube Size:", min_value=1, max_value=100, value=10)
 
 # RGB値をユーザーから取得
-st.header("1つ目の立方体")
+st.write("1つ目の立方体")
 col1, col2, col3 = st.columns(3)
 with col1:
     r1 = st.number_input('R1:', min_value=0, max_value=255, value=0)
@@ -22,7 +20,7 @@ with col2:
 with col3:
     b1 = st.number_input('B1:', min_value=0, max_value=255, value=0)
 
-st.header("2つ目の立方体")
+st.write("2つ目の立方体")
 col1, col2, col3 = st.columns(3)
 with col1:
     r2 = st.number_input('R2:', min_value=0, max_value=255, value=0)
@@ -30,6 +28,9 @@ with col2:
     g2 = st.number_input('G2:', min_value=0, max_value=255, value=0)
 with col3:
     b2 = st.number_input('B2:', min_value=0, max_value=255, value=0)
+
+# 立方体のサイズ
+cube_size = st.slider("Cube Size:", min_value=1, max_value=100, value=10)
 
 # 3Dプロットの作成
 fig = go.Figure()
