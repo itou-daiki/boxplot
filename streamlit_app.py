@@ -114,12 +114,13 @@ fig_radar.add_trace(go.Scatterpolar(
 # レイアウトの設定
 fig_radar.update_layout(
     polar=dict(
+        theta_offset=90,  # R軸が真上を向くように90度回転
         radialaxis=dict(
             visible=True,
             range=[0, 255]
         )
     ),
-    title='RGB Components Radar Chart'
+    title='RGB成分のレーダーチャート'
 )
 
 # レーダーチャートの表示
