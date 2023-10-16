@@ -10,6 +10,7 @@ st.set_page_config(page_title="3D RGB Cube Visualizer")
 st.title("3D RGB Cube Visualizer")
 st.caption("Created by Daiki Ito")
 st.subheader("RGB値から半透明の立方体とレーダーチャートを描画することができます")
+st.write("")
 
 # RGB値をユーザーから取得
 st.write("＜RGB1＞")
