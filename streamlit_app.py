@@ -12,7 +12,7 @@ st.caption("Created by Daiki Ito")
 st.subheader("RGB値から半透明の立方体とレーダーチャートを描画することができます")
 
 # RGB値をユーザーから取得
-st.subheader("RGB1")
+st.subheader("＜RGB1＞")
 col1, col2, col3 = st.columns(3)
 with col1:
     r1 = st.number_input('R1:', min_value=0, max_value=255, value=0)
@@ -21,7 +21,7 @@ with col2:
 with col3:
     b1 = st.number_input('B1:', min_value=0, max_value=255, value=0)
 
-st.subheader("RGB2")
+st.subheader("＜RGB2＞")
 col1, col2, col3 = st.columns(3)
 with col1:
     r2 = st.number_input('R2:', min_value=0, max_value=255, value=0)
