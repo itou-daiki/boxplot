@@ -75,7 +75,7 @@ fig.update_layout(
         xaxis=dict(title='R', range=[0, 255]),
         yaxis=dict(title='G', range=[0, 255]),
         zaxis=dict(title='B', range=[0, 255]),
-    )
+    ),
     title='RGB成分のボックスプロット'
 )
 
