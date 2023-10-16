@@ -79,6 +79,7 @@ fig.update_layout(
 )
 
 # プロットの表示
+st.write("３次元図（立方体）")
 st.plotly_chart(fig)
 
 # レーダーチャートの作成
@@ -93,4 +94,5 @@ df = pd.DataFrame({
 fig_radar = px.line_polar(df, r=df.columns[1:], theta='Color Component', line_dash=df.columns[1:], title='RGB Components Radar Chart')
 
 # レーダーチャートの表示
+st.write("レーダーチャート")
 st.plotly_chart(fig_radar)
