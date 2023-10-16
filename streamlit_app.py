@@ -1,5 +1,7 @@
 import streamlit as st
 import plotly.graph_objects as go
+import plotly.express as px
+import pandas as pd
 
 # Streamlitのページ設定
 st.set_page_config(page_title="3D RGB Cube Visualizer")
@@ -7,7 +9,7 @@ st.set_page_config(page_title="3D RGB Cube Visualizer")
 # ヘッダー
 st.title("3D RGB Cube Visualizer")
 st.caption("Created by Daiki Ito")
-st.subheader("RGB値から半透明の立方体を描画します")
+st.subheader("RGB値から半透明の立方体とレーダーチャートを描画します")
 
 # RGB値をユーザーから取得
 st.write("立方体１")
@@ -78,3 +80,17 @@ fig.update_layout(
 
 # プロットの表示
 st.plotly_chart(fig)
+
+# レーダーチャートの作成
+# RGB値をデータフレームに変換
+df = pd.DataFrame({
+    'Color Component': ['R', 'G', 'B'],
+    'Cube 1': [r1, g1, b1],
+    'Cube 2': [r2, g2, b2]
+})
+
+# レーダーチャートをプロット
+fig_radar = px.line_polar(df, r=df.columns[1:], theta='Color Component', line_dash=df.columns[1:], title='RGB Components Radar Chart')
+
+# レーダーチャートの表示
+st.plotly_chart(fig_radar)
