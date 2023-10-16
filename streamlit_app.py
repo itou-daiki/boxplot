@@ -94,8 +94,10 @@ df = pd.concat([df1, df2], ignore_index=True)
 fig_radar = px.line_polar(df, r='Value', theta='Color Component', color='Cube', 
                            line_dash='Cube', 
                            line_shape='closed',  # これにより、レーダーチャートの3点が結ばれます
-                           title='RGB Components Radar Chart',
-                           line_dash_sequence=['red', 'blue'])  # 線の色を3次元図と対応させます
+                           title='RGB Components Radar Chart')
+
+# 線の色を3次元図と対応させる
+fig_radar.update_traces(line=dict(color=df['Cube'].apply(lambda x: 'red' if x == 'Cube 1' else 'blue')))
 
 # レーダーチャートの表示
 st.write("レーダーチャート")
