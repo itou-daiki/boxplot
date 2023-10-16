@@ -91,13 +91,36 @@ df2 = pd.DataFrame({'Color Component': ['R', 'G', 'B'], 'Value': [r2, g2, b2], '
 df = pd.concat([df1, df2], ignore_index=True)
 
 # レーダーチャートをプロット
-fig_radar = px.line_polar(df, r='Value', theta='Color Component', color='Cube', 
-                           line_dash='Cube', 
-                           line_shape='closed',  # これにより、レーダーチャートの3点が結ばれます
-                           title='RGB Components Radar Chart')
+fig_radar = go.Figure()
 
-# 線の色を3次元図と対応させる
-fig_radar.update_traces(line=dict(color=df['Cube'].apply(lambda x: 'red' if x == 'Cube 1' else 'blue')))
+# Cube 1のデータを追加
+fig_radar.add_trace(go.Scatterpolar(
+    r=df[df['Cube'] == 'Cube 1']['Value'].tolist() + [df[df['Cube'] == 'Cube 1']['Value'].tolist()[0]],  # 最初の点に戻る
+    theta=df[df['Cube'] == 'Cube 1']['Color Component'].tolist() + [df[df['Cube'] == 'Cube 1']['Color Component'].tolist()[0]],  # 最初の点に戻る
+    fill='toself',
+    name='Cube 1',
+    line_color='red'
+))
+
+# Cube 2のデータを追加
+fig_radar.add_trace(go.Scatterpolar(
+    r=df[df['Cube'] == 'Cube 2']['Value'].tolist() + [df[df['Cube'] == 'Cube 2']['Value'].tolist()[0]],  # 最初の点に戻る
+    theta=df[df['Cube'] == 'Cube 2']['Color Component'].tolist() + [df[df['Cube'] == 'Cube 2']['Color Component'].tolist()[0]],  # 最初の点に戻る
+    fill='toself',
+    name='Cube 2',
+    line_color='blue'
+))
+
+# レイアウトの設定
+fig_radar.update_layout(
+    polar=dict(
+        radialaxis=dict(
+            visible=True,
+            range=[0, 255]
+        )
+    ),
+    title='RGB Components Radar Chart'
+)
 
 # レーダーチャートの表示
 st.write("レーダーチャート")
