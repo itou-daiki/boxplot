@@ -9,10 +9,10 @@ st.set_page_config(page_title="3D RGB Cube Visualizer")
 # ヘッダー
 st.title("3D RGB Cube Visualizer")
 st.caption("Created by Daiki Ito")
-st.subheader("RGB値から半透明の立方体とレーダーチャートを描画します")
+st.subheader("RGB値から半透明の立方体とレーダーチャートを描画することができます")
 
 # RGB値をユーザーから取得
-st.write("立方体１")
+st.subheader("立方体１")
 col1, col2, col3 = st.columns(3)
 with col1:
     r1 = st.number_input('R1:', min_value=0, max_value=255, value=0)
@@ -21,7 +21,7 @@ with col2:
 with col3:
     b1 = st.number_input('B1:', min_value=0, max_value=255, value=0)
 
-st.write("立方体２")
+st.subheader("立方体２")
 col1, col2, col3 = st.columns(3)
 with col1:
     r2 = st.number_input('R2:', min_value=0, max_value=255, value=0)
@@ -76,10 +76,11 @@ fig.update_layout(
         yaxis=dict(title='G', range=[0, 255]),
         zaxis=dict(title='B', range=[0, 255]),
     )
+    title='RGB成分のボックスプロット'
 )
 
 # プロットの表示
-st.write("３次元図（立方体）")
+st.subheader("モデルの可視化")
 st.plotly_chart(fig)
 
 # レーダーチャートの作成
@@ -124,5 +125,4 @@ fig_radar.update_layout(
 )
 
 # レーダーチャートの表示
-st.write("レーダーチャート")
 st.plotly_chart(fig_radar)
