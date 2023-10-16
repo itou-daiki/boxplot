@@ -91,7 +91,11 @@ df2 = pd.DataFrame({'Color Component': ['R', 'G', 'B'], 'Value': [r2, g2, b2], '
 df = pd.concat([df1, df2], ignore_index=True)
 
 # レーダーチャートをプロット
-fig_radar = px.line_polar(df, r='Value', theta='Color Component', color='Cube', line_dash='Cube', title='RGB Components Radar Chart')
+fig_radar = px.line_polar(df, r='Value', theta='Color Component', color='Cube', 
+                           line_dash='Cube', 
+                           line_shape='closed',  # これにより、レーダーチャートの3点が結ばれます
+                           title='RGB Components Radar Chart',
+                           line_dash_sequence=['red', 'blue'])  # 線の色を3次元図と対応させます
 
 # レーダーチャートの表示
 st.write("レーダーチャート")
