@@ -84,15 +84,19 @@ st.plotly_chart(fig)
 
 # レーダーチャートの作成
 # RGB値をデータフレームに変換
-df = pd.DataFrame({
-    'Color Component': ['R', 'G', 'B'],
-    'Cube 1': [r1, g1, b1],
-    'Cube 2': [r2, g2, b2]
-})
+df1 = pd.DataFrame({'Color Component': ['R', 'G', 'B'], 'Value': [r1, g1, b1]})
+df2 = pd.DataFrame({'Color Component': ['R', 'G', 'B'], 'Value': [r2, g2, b2]})
 
-# レーダーチャートをプロット
-fig_radar = px.line_polar(df, r=df.columns[1:], theta='Color Component', line_dash=df.columns[1:], title='RGB Components Radar Chart')
+# レーダーチャートをプロット（立方体1）
+fig_radar1 = px.line_polar(df1, r='Value', theta='Color Component', title='RGB Components of Cube 1')
 
-# レーダーチャートの表示
-st.write("レーダーチャート")
-st.plotly_chart(fig_radar)
+# レーダーチャートの表示（立方体1）
+st.write("レーダーチャート（立方体1）")
+st.plotly_chart(fig_radar1)
+
+# レーダーチャートをプロット（立方体2）
+fig_radar2 = px.line_polar(df2, r='Value', theta='Color Component', title='RGB Components of Cube 2')
+
+# レーダーチャートの表示（立方体2）
+st.write("レーダーチャート（立方体2）")
+st.plotly_chart(fig_radar2)
