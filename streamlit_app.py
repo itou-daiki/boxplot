@@ -31,6 +31,16 @@ with col2:
 with col3:
     b2 = st.number_input('B2:', min_value=0, max_value=255, value=0)
 
+if not b2 == null: 
+    st.write("＜RGB2＞")
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        r3 = st.number_input('R3:', min_value=0, max_value=255, value=0)
+    with col2:
+        g3 = st.number_input('G3:', min_value=0, max_value=255, value=0)
+    with col3:
+        b3 = st.number_input('B3:', min_value=0, max_value=255, value=0)
+
 # 頂点のインデックスを定義（立方体を構成する各三角形の3つの頂点）
 faces_idx = [
     [0, 1, 5], [5, 4, 0],  # front
@@ -70,6 +80,19 @@ fig.add_trace(go.Mesh3d(
     showscale=False
 ))
 
+# 立方体3
+fig.add_trace(go.Mesh3d(
+    x=[0, r3, r3, 0, 0, r3, r3, 0],
+    y=[0, 0, g3, g3, 0, 0, g3, g3],
+    z=[0, 0, 0, 0, b3, b3, b3, b3],
+    i=[idx[0] for idx in faces_idx],
+    j=[idx[1] for idx in faces_idx],
+    k=[idx[2] for idx in faces_idx],
+    opacity=0.2,  # 透明度を0.2に設定
+    color='green',  # 色を青に変更
+    showscale=False
+))
+
 # プロットの設定
 fig.update_layout(
     scene=dict(
@@ -89,9 +112,10 @@ st.plotly_chart(fig)
 # RGB値をデータフレームに変換
 df1 = pd.DataFrame({'Color Component': ['R', 'G', 'B'], 'Value': [r1, g1, b1], 'Cube': ['Cube 1'] * 3})
 df2 = pd.DataFrame({'Color Component': ['R', 'G', 'B'], 'Value': [r2, g2, b2], 'Cube': ['Cube 2'] * 3})
+df3 = pd.DataFrame({'Color Component': ['R', 'G', 'B'], 'Value': [r3, g3, b3], 'Cube': ['Cube 3'] * 3})
 
 # 2つのデータフレームを結合
-df = pd.concat([df1, df2], ignore_index=True)
+df = pd.concat([df1, df2, df3], ignore_index=True)
 
 # レーダーチャートをプロット
 fig_radar = go.Figure()
@@ -112,6 +136,15 @@ fig_radar.add_trace(go.Scatterpolar(
     fill='toself',
     name='Cube 2',
     line_color='blue'
+))
+
+# Cube 3のデータを追加
+fig_radar.add_trace(go.Scatterpolar(
+    r=df[df['Cube'] == 'Cube 3']['Value'].tolist() + [df[df['Cube'] == 'Cube 3']['Value'].tolist()[0]],  # 最初の点に戻る
+    theta=df[df['Cube'] == 'Cube 3']['Color Component'].tolist() + [df[df['Cube'] == 'Cube 3']['Color Component'].tolist()[0]],  # 最初の点に戻る
+    fill='toself',
+    name='Cube 3',
+    line_color='green'
 ))
 
 # レイアウトの設定
