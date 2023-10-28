@@ -309,7 +309,7 @@ fig_radar.add_trace(go.Scatterpolar(
     theta=df[df['Cube'] == 'Cube 4']['Color Component'].tolist() + [df[df['Cube'] == 'Cube 4']['Color Component'].tolist()[0]],
     fill='toself',
     name='Cube 4',
-    line_color='cyan'
+    line_color='purple'
 ))
 
 # Cube 5のデータを追加
@@ -318,7 +318,7 @@ fig_radar.add_trace(go.Scatterpolar(
     theta=df[df['Cube'] == 'Cube 5']['Color Component'].tolist() + [df[df['Cube'] == 'Cube 5']['Color Component'].tolist()[0]],
     fill='toself',
     name='Cube 5',
-    line_color='magenta'
+    line_color='yellow'
 ))
 
 # Cube 6のデータを追加
@@ -327,7 +327,7 @@ fig_radar.add_trace(go.Scatterpolar(
     theta=df[df['Cube'] == 'Cube 6']['Color Component'].tolist() + [df[df['Cube'] == 'Cube 6']['Color Component'].tolist()[0]],
     fill='toself',
     name='Cube 6',
-    line_color='pink'
+    line_color='orange'
 ))
 
 # Cube 7のデータを追加
@@ -336,7 +336,7 @@ fig_radar.add_trace(go.Scatterpolar(
     theta=df[df['Cube'] == 'Cube 7']['Color Component'].tolist() + [df[df['Cube'] == 'Cube 7']['Color Component'].tolist()[0]],
     fill='toself',
     name='Cube 7',
-    line_color='yellow'
+    line_color='cyan'
 ))
 
 # Cube 8のデータを追加
@@ -345,7 +345,7 @@ fig_radar.add_trace(go.Scatterpolar(
     theta=df[df['Cube'] == 'Cube 8']['Color Component'].tolist() + [df[df['Cube'] == 'Cube 8']['Color Component'].tolist()[0]],
     fill='toself',
     name='Cube 8',
-    line_color='purple'
+    line_color='magenta'
 ))
 
 # Cube 9のデータを追加
@@ -354,7 +354,7 @@ fig_radar.add_trace(go.Scatterpolar(
     theta=df[df['Cube'] == 'Cube 9']['Color Component'].tolist() + [df[df['Cube'] == 'Cube 9']['Color Component'].tolist()[0]],
     fill='toself',
     name='Cube 9',
-    line_color='orange'
+    line_color='pink'
 ))
 
 
