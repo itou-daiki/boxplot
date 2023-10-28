@@ -12,6 +12,10 @@ st.caption("Created by Daiki Ito")
 st.subheader("RGB値から半透明の立方体とレーダーチャートを描画することができます")
 st.subheader("")
 
+r3 = 0
+g3 = 0
+b3 = 0
+
 # RGB値をユーザーから取得
 st.write("＜RGB1＞")
 col1, col2, col3 = st.columns(3)
