@@ -35,7 +35,7 @@ with col2:
 with col3:
     b2 = st.number_input('B2:', min_value=0, max_value=255, value=0)
 
-if not b2 != 0: 
+if not b2 == 0:
     st.write("＜RGB3＞")
     col1, col2, col3 = st.columns(3)
     with col1:
